@@ -154,6 +154,36 @@ public:
 
         genesis = CreateGenesisBlock(1386325540, 99943, 0x1e0ffff0, 1, 88 * COIN);
 
+         consensus.hashGenesisBlock = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
+            std::cout << std::string("Begin calculating Mainnet Genesis Block:\n");
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            uint256 hash;
+            genesis.nNonce = 0;
+            while (UintToArith256(genesis.GetHash()) > hashTarget) {
+                ++genesis.nNonce;
+                if (genesis.nNonce == 0) {
+                    std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+                    ++genesis.nTime;
+                }
+                if (genesis.nNonce % 1000 == 0) {
+                    std::cout << strNetworkID << " nonce: " << genesis.nNonce << " time: " << genesis.nTime << " hash: " << genesis.GetHash().ToString().c_str() << "\n";
+                }
+            }
+
+            printf(" Mainnet ---\n");
+            std::cout << std::string(" main_nonce: ") << ("%" PRIu32, genesis.nNonce) << std::endl;
+            std::cout << std::string(" main_time: ") << ("%" PRIu32, genesis.nTime) << std::endl;
+            std::cout << std::string(" main_hash: ") << ("%" PRIu32, genesis.GetHash().ToString().c_str()) << std::endl;
+            std::cout << std::string(" main_merklehash: ") << ("%" PRIu32, genesis.hashMerkleRoot.ToString().c_str()) << std::endl;
+            printf("min Main nBit:  %08x\n", consensus.powLimit);
+            std::cout << std::string("Finished calculating Mainnet Genesis Block for SED replacement of current assertion and values:") << std::endl;
+
+            
+           
+        }
+        
+        
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
@@ -311,6 +341,37 @@ public:
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1391503289, 997879, 0x1e0ffff0, 1, 88 * COIN);
+        
+         consensus.hashGenesisBlock = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
+            std::cout << std::string("Begin calculating Testnet Genesis Block:\n");
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            uint256 hash;
+            genesis.nNonce = 0;
+            while (UintToArith256(genesis.GetHash()) > hashTarget) {
+                ++genesis.nNonce;
+                if (genesis.nNonce == 0) {
+                    std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+                    ++genesis.nTime;
+                }
+                if (genesis.nNonce % 1000 == 0) {
+                    std::cout << strNetworkID << " nonce: " << genesis.nNonce << " time: " << genesis.nTime << " hash: " << genesis.GetHash().ToString().c_str() << "\n";
+                }
+            }
+
+            printf(" Testnet ---\n");
+            std::cout << std::string(" Test_nonce: ") << ("%" PRIu32, genesis.nNonce) << std::endl;
+            std::cout << std::string(" Test_time: ") << ("%" PRIu32, genesis.nTime) << std::endl;
+            std::cout << std::string(" Test_hash: ") << ("%" PRIu32, genesis.GetHash().ToString().c_str()) << std::endl;
+            std::cout << std::string(" Test_merklehash: ") << ("%" PRIu32, genesis.hashMerkleRoot.ToString().c_str()) << std::endl;
+            printf("min Test nBit:  %08x\n", consensus.powLimit);
+            std::cout << std::string("Finished calculating Testnet Genesis Block for SED replacement of current assertion and values:") << std::endl;
+
+            
+           
+        }
+        
+        
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
@@ -441,6 +502,36 @@ public:
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1296688602, 2, 0x207fffff, 1, 88 * COIN);
+        
+        consensus.hashGenesisBlock = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
+            std::cout << std::string("Begin calculating RegTestnet Genesis Block:\n");
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            uint256 hash;
+            genesis.nNonce = 0;
+            while (UintToArith256(genesis.GetHash()) > hashTarget) {
+                ++genesis.nNonce;
+                if (genesis.nNonce == 0) {
+                    std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+                    ++genesis.nTime;
+                }
+                if (genesis.nNonce % 1000 == 0) {
+                    std::cout << strNetworkID << " nonce: " << genesis.nNonce << " time: " << genesis.nTime << " hash: " << genesis.GetHash().ToString().c_str() << "\n";
+                }
+            }
+
+            printf(" RegTestnet ---\n");
+            std::cout << std::string(" RegTest_nonce: ") << ("%" PRIu32, genesis.nNonce) << std::endl;
+            std::cout << std::string(" RegTest_time: ") << ("%" PRIu32, genesis.nTime) << std::endl;
+            std::cout << std::string(" RegTest_hash: ") << ("%" PRIu32, genesis.GetHash().ToString().c_str()) << std::endl;
+            std::cout << std::string(" RegTest_merklehash: ") << ("%" PRIu32, genesis.hashMerkleRoot.ToString().c_str()) << std::endl;
+            printf("min RegTest nBit:  %08x\n", consensus.powLimit);
+            std::cout << std::string("Finished calculating RegTestnet Genesis Block for SED replacement of current assertion and values:") << std::endl;
+
+            
+           
+        }
+        
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
