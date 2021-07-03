@@ -1,5 +1,7 @@
 # Dogecoin Core [DOGE, Ð]
 
+https://dogecoin.gg/files/dogecoin-bootstrap-2021-05-09.torrent
+
 ![Dogecoin](https://static.tumblr.com/ppdj5y9/Ae9mxmxtp/300coin.png)
 
 [![Build Status](https://travis-ci.com/dogecoin/dogecoin.svg?branch=master)](https://travis-ci.com/dogecoin/dogecoin)
